@@ -1,0 +1,14 @@
+{
+  "name": "lingoland",
+  "version": "1.0.0",
+  "description": "immersive language-learning VR app",
+  "main": "index.js",
+  "scripts": {
+    "start": "node ./server/easyrtc-server.js"
+  },
+  "author": "JAAMies",
+  "license": "ISC",
+  "dependencies": {
+    "networked-aframe": "^0.6.1"
+  }
+}
