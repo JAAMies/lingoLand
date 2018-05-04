@@ -9,6 +9,11 @@
   "author": "JAAMies",
   "license": "ISC",
   "dependencies": {
-    "networked-aframe": "^0.6.1"
+    "aframe": "^0.8.2",
+    "easyrtc": "^1.1.0",
+    "express": "^4.16.3",
+    "networked-aframe": "^0.6.1",
+    "socket.io": "^2.1.0",
+    "three.js": "^0.77.1"
   }
 }
