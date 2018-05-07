@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Route, Switch } from 'react-router-dom';
-import { Login} from './components';
+import { Login} from './components/LogIn';
+import SignUp from './components/SignUp';
 
 export default class Routes extends Component {
 
@@ -9,6 +10,7 @@ export default class Routes extends Component {
       <Switch>
         {/* Routes placed here are available to all visitors */}
         <Route exact path="/" component={Login} />
+        <Route exact path="/signup" component={SignUp} />
         {
           isLoggedIn &&
           <Switch>

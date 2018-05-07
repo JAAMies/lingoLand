@@ -13,10 +13,7 @@ const User = db.define('user', {
       return () => this.getDataValue('password');
     }
   },
-  firstName: {
-    type: Sequelize.STRING
-  },
-  lastName: {
+  Name: {
     type: Sequelize.STRING
   },
   language: {
