@@ -1,4 +1,4 @@
-const promptList = [
+const PROMPTS = [
   {
     character1: 'foreign exchange student',
     setting: 'sitting next to you',
@@ -33,11 +33,11 @@ const promptList = [
 
 // generates a random number to access a prompt from the promptList
 const randomNum = function (){
-  let max = promptList.length;
+  let max = PROMPTS.length;
   return Math.floor(Math.random() * Math.floor(max));
 };
 
-function generatePrompt(prompList, num) {
+function generatePrompt(promptList = PROMPTS, num = randomNum()) {
   let player1Prompt = `You are a ${promptList[num].character1}. The person ${promptList[num].setting} seems friendly. Strike up a conversation and ask if they can ${promptList[num].verb} you ${promptList[num].subject}.`;
 
   let player2Prompt = `The person ${promptList[num].setting} is a ${promptList[num].character1}; ${promptList[num].verb} them ${promptList[num].subject}.`;
@@ -47,10 +47,18 @@ function generatePrompt(prompList, num) {
   Player 2: ${player2Prompt}`;
 }
 // when 'Get New Prompt' button is clicked, a new prompt is generated and displayed
+
 document.getElementById('get-prompt-button').addEventListener('click', function () {
-  let text = document.getElementById("do-that");
-  text.setAttribute("value", generatePrompt(promptList, randomNum(promptList)));
+  let prompt = generatePrompt();
+  NAF.connection.broadcastDataGuaranteed("prompt", prompt);
+  setPromptText(prompt);
 });
 
+function setPromptText(message){
+  let text = document.getElementById("do-that");
+  text.setAttribute("value", message)
+}
 
-
+NAF.connection.subscribeToDataChannel('prompt', function (sender, type, message){
+  setPromptText(message);
+})
