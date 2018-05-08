@@ -1,0 +1,71 @@
+<html>
+  <head>
+    <script src="https://aframe.io/releases/0.8.0/aframe.min.js"></script>
+    <script src="https://unpkg.com/aframe-environment-component/dist/aframe-environment-component.min.js"></script>
+
+    <!-- script for animations  -->
+    <script>
+      AFRAME.registerComponent('scale-on-mouseenter', {
+        schema: {
+          to: {default: '2.5 2.5 2.5'}
+        },
+
+        init: function () {
+          var data = this.data;
+          this.el.addEventListener('mouseenter', function () {
+            this.setAttribute('scale', data.to);
+          });
+        }
+      });
+    </script>
+  </head>
+
+  <body>
+    <a-scene>
+
+      <a-assets>
+        <!-- <img id="boxTexture" src="https://i.imgur.com/mYmmbrp.jpg"> -->
+        <img id="groundTexture" src="https://cdn.aframe.io/a-painter/images/floor.jpg">
+        <!-- <img id="skyTexture" src="https://cdn.aframe.io/360-image-gallery-boilerplate/img/sechelt.jpg">
+        <audio src="https://cdn.aframe.io/basic-guide/audio/backgroundnoise.wav" autoplay preload></audio> -->
+
+        <!-- blackjack table -->
+        <a-asset-item id="blackjack-obj" src="./assets/blackjack/blackjack.obj"></a-asset-item>
+        <a-asset-item id="blackjack-mtl" src="./assets/blackjack/blackjack.mtl"></a-asset-item>
+
+        <!-- poker chips -->
+        <a-asset-item id="chips-obj" src="./assets/pokerChips/model.obj"></a-asset-item>
+        <a-asset-item id="chips-mtl" src="./assets/pokerChips/materials.mtl"></a-asset-item>
+
+      </a-assets>
+      <!-- blackjack table -->
+      <a-entity obj-model="obj: #blackjack-obj; mtl: #blackjack-mtl" position="-2 0 -7" rotation="0 0 0" scale=".02 .02 .02"></a-entity>
+      <!-- poker chips -->
+      <a-entity obj-model="obj: #chips-obj; mtl: #chips-mtl" position="0 2.55 -6" scale="0.2 0.2 0.2"></a-entity>
+      <a-entity obj-model="obj: #chips-obj; mtl: #chips-mtl" position="-1 2.55 -6" scale="0.2 0.2 0.2"></a-entity>
+
+
+
+      <!-- <a-box src="#boxTexture" position="0 2 -5" rotation="0 45 45" scale="2 2 2">
+        <a-animation attribute="position" to="0 2.2 -5" direction="alternate" dur="2000" repeat="indefinite"></a-animation>
+        <a-animation attribute="scale" begin="mouseenter" dur="300" to="2.3 2.3 2.3"></a-animation>
+        <a-animation attribute="scale" begin="mouseleave" dur="300" to="2 2 2"></a-animation>
+        <a-animation attribute="rotation" begin="click" dur="2000" to="360 405 45"></a-animation>
+      </a-box> -->
+
+      <a-text value="LingoLand" color="#BBB" position="-0.9 2 -3" scale="1.5 1.5 1.5"></a-text>
+
+      <!-- <a-entity environment="preset: forest; dressingAmount: 500"></a-entity> -->
+      <a-plane src="#groundTexture" rotation="-90 0 0" width="30" height="30" repeat="10 10"></a-plane>
+      <!-- <a-sky src="#skyTexture"></a-sky> -->
+
+      <a-light type="ambient" color="#445451"></a-light>
+      <a-light type="point" intensity="2" position="2 4 4"></a-light>
+
+      <a-camera>
+        <a-cursor></a-cursor>
+      </a-camera>
+
+    </a-scene>
+  </body>
+</html>

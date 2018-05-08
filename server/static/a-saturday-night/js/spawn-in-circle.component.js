@@ -1,3 +1,4 @@
+console.log('this is in SpawnComponent')
 AFRAME.registerComponent('spawn-in-circle', {
   schema: {
     radius: {type: 'number', default: 1}
@@ -22,7 +23,7 @@ AFRAME.registerComponent('spawn-in-circle', {
     return Math.random()*Math.PI*2;
   },
 
-  randomPointOnCircle: function (radius, angleRad) {
+  randomPointOnCircle: function (radius, angleRad, angleToCenter) {
     x = Math.cos(angleRad)*radius;
     y = Math.sin(angleRad)*radius;
     return {x: x, y: y};

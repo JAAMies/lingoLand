@@ -11,8 +11,16 @@
 
     <script src="https://unpkg.com/aframe-randomizer-components@^3.0.1/dist/aframe-randomizer-components.min.js"></script>
     <script src="https://unpkg.com/aframe-particle-system-component@1.0.5/dist/aframe-particle-system-component.min.js"></script>
+
+
     <script src="/js/spawn-in-circle.component.js"></script>
+
+    <!-- conversation prompt generator with click handler -->
+    <script src="/js/conversationPrompts.js" defer></script>
+
   </head>
+
+
   <body>
     <a-scene networked-scene="
       room: audio;
@@ -20,6 +28,7 @@
       audio: true;
       debug: true;
     ">
+
       <a-assets>
 
         <img id="grid" src="https://img.gs/bbdkhfbzkk/stretch/https://i.imgur.com/25P1geh.png" crossorigin="anonymous">
@@ -67,7 +76,19 @@
         <!-- /Templates -->
       </a-assets>
 
-      <a-entity id="player" networked="template:#avatar-template;attachTemplateToLocal:false;" camera spawn-in-circle="radius:3;" position="0 1.3 0" wasd-controls look-controls>
+      <a-camera><a-cursor></a-cursor></a-camera>
+
+      <!-- button -->
+      <a-entity id="get-prompt-button" geometry="primitive: box" material="color: green" position="-.5 2.8 -2.9" scale="1.5 .5 .01">
+      </a-entity>
+      <a-text id='get-new-prompt-text' value="Get A New Prompt" color="black" position="-1 2.8 -2.8" scale=".5 .5 .5"></a-text>
+      <!-- prompt text -->
+      <a-entity>
+        <a-box color="black" position="1.3 2 -3.1" scale="4 1.5 .01" opacity=".5"></a-box>
+        <a-text id='do-that' color="#BBB" position="0 2 -3" scale=".5 .5 .5"></a-text>
+      </a-entity>
+
+      <a-entity id="player" networked="template:#avatar-template;attachTemplateToLocal:false;" camera spawn-in-circle="radius:2;" position="0 1.3 0" wasd-controls look-controls>
         <a-sphere class="head"
           visible="false"
           random-color
@@ -78,12 +99,16 @@
         geometry="primitive: plane; width: 10000; height: 10000;" rotation="-90 0 0"
         material="src: #grid; repeat: 10000 10000; transparent: true; metalness:0.6; roughness: 0.4; sphericalEnvMap: #sky;"></a-entity>
 
+      <!-- lights -->
       <a-entity light="color: #ccccff; intensity: 1; type: ambient;" visible=""></a-entity>
       <a-entity light="color: #ffaaff; intensity: 1.5" position="5 5 5"></a-entity>
 
+      <!-- atmosphere: sky and snow -->
       <a-sky src="#sky" rotation="0 -90 0"></a-sky>
       <a-entity id="particles" particle-system="preset: snow"></a-entity>
     </a-scene>
+
+
 
     <script>
       // On mobile remove elements that are resource heavy
