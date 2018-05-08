@@ -13,7 +13,7 @@
     <script src="https://unpkg.com/aframe-randomizer-components@^3.0.1/dist/aframe-randomizer-components.min.js"></script>
     <script src="https://unpkg.com/aframe-particle-system-component@1.0.5/dist/aframe-particle-system-component.min.js"></script>
     <script src="/js/spawn-in-circle.component.js"></script>
-
+    
     <!-- add preset forest scene -->
     <script src="https://rawgit.com/feiss/aframe-environment-component/master/dist/aframe-environment-component.min.js"></script>
   </head>
@@ -30,22 +30,29 @@
         <a-asset-item id="raccoon-obj" src="./assets/Raccoon_Blocks/model.obj"></a-asset-item>
         <a-asset-item id="raccoon-mtl" src="./assets/Raccoon_Blocks/materials.mtl"></a-asset-item>
 
+        <a-asset-item id="diner-obj" src="./lingo-assets/cafe/cafe.obj"></a-asset-item>
+        <a-asset-item id="diner-mtl" src="./lingo-assets/cafe/cafe.mtl"></a-asset-item> 
+
+        <a-asset-item id="coffeeshop-obj" src="./lingo-assets/coffeehouse/coffeehouse.obj"></a-asset-item>
+        <a-asset-item id="coffeeshop-mtl" src="./lingo-assets/coffeehouse/coffeehouse.mtl"></a-asset-item> 
+
         <a-asset-item id="meganom-obj" src="./lingo-assets/meganom/house2.obj"></a-asset-item>
         <a-asset-item id="meganom-mtl" src="./lingo-assets/meganom/house2.mtl"></a-asset-item>
 
-        <a-asset-item id="shell-obj" src="./lingo-assets/house-shell/house.obj"></a-asset-item>
-        <a-asset-item id="shell-mtl" src="./lingo-assets/house-shell/house.mtl"></a-asset-item>
-
-        <a-asset-item id="house-obj" src="./lingo-assets/house/model.obj"></a-asset-item>
-        <a-asset-item id="house-mtl" src="./lingo-assets/house/materials.mtl"></a-asset-item>
-
-        <a-asset-item id="house2-obj" src="./lingo-assets/house2/model.obj"></a-asset-item>
-        <a-asset-item id="house2-mtl" src="./lingo-assets/house2/materials.mtl"></a-asset-item>
-
         <!-- OBJECTS -->
+        <a-asset-item id="bar-obj" src="./lingo-assets/bar/model.obj"></a-asset-item>
+        <a-asset-item id="bar-mtl" src="./lingo-assets/bar/materials.mtl"></a-asset-item> 
+
+        <a-asset-item id="sofa2-obj" src="./lingo-assets/sofa2/model.obj"></a-asset-item>
+        <a-asset-item id="sofa2-mtl" src="./lingo-assets/sofa2/materials.mtl"></a-asset-item> 
 
         <!-- PEOPLE -->
+        <a-asset-item id="jack-obj" src="./lingo-assets/people/Jack/human_male.obj"></a-asset-item>
+        <a-asset-item id="jack-mtl" src="./lingo-assets/people/Jack/human_male.mtl"></a-asset-item>
 
+        <a-asset-item id="scott-obj" src="./lingo-assets/people/Scott/model__0.obj"></a-asset-item>
+        <a-asset-item id="scott-mtl" src="./lingo-assets/people/Scott/model__0.mtl"></a-asset-item>
+        
         <!-- Templates -->
         <!-- Avatar -->
         <template id="avatar-template">
@@ -53,37 +60,27 @@
         </template>
 
         <!-- /Templates -->
-      </a-assets>
+      </a-assets> 
       <!-- /\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/ Assets end -->
-
+      
       <!-- <canvas width="623" height="351" style="width: 623px; height: 351px;"></canvas> -->
 
-      <a-entity environment="preset: forest" scale="1.3 1.3 1.3"></a-entity>
+      <a-entity environment="preset: forest"></a-entity>
       <a-entity id="player" class="heads" networked="template:#avatar-template;attachTemplateToLocal:false;" camera="userHeight: 3" spawn-in-circle="radius:2;" wasd-controls look-controls></a-entity>
-
+      
       <!-- BUILDINGS -->
-      <a-entity obj-model="mtl: #meganom-mtl; obj: #meganom-obj" position="-15 10 0" scale="0.25 0.222 0.2" rotation="90 0 0"></a-entity>
-      <a-entity obj-model="mtl: #shell-mtl; obj: #shell-obj" position="31.25 -0.01 0" scale="0.05 0.05 0.05" rotation="0 90 0"></a-entity>
-
-      <a-entity obj-model="mtl: #house-mtl; obj: #house-obj" position="30 2 0"  scale="2 2 2" rotation="0 0 0"></a-entity>
-      <a-entity obj-model="mtl: #house2-mtl; obj: #house2-obj" position="-15 2 0"  scale="2 2 2" rotation="0 180 0"></a-entity>
+      <a-entity obj-model="mtl: #meganom-mtl; obj: #meganom-obj" position="-10 5 -16" scale="0.1 0.1 0.1" rotation="90 200 0"></a-entity>
+      <a-entity obj-model="mtl: #diner-mtl; obj: #diner-obj" position="16 0 0" rotation="0 90 0"></a-entity>
+      <a-entity obj-model="mtl: #coffeeshop-mtl; obj: #coffeeshop-obj" position="5 0 19" rotation="0 0 0" scale="0.02 0.02 0.02"></a-entity>
 
       <!-- OBJECTS -->
-
-
-      <!-- PEOPLE -->
-
-
-      <!-- transparent boxes -->
-      <a-box id="books" color="red" position="32.5 3 -0.5" rotation="0 0 0" depth="0.3" opacity="0"
-        scale="2 2 2"></a-box>
-      <a-text id="loslibros" value="los libros" visible="false" color="#000"
-        position="32.5 3 -1" scale="1.5 1.5 1.5" rotation="180 0 180"></a-text>
-
+      <a-entity obj-model="mtl: #bar-mtl; obj: #bar-obj" position="-9 1.5 -19"  scale="1 1 1" rotation="0 -70 0"></a-entity>
+      <a-entity obj-model="mtl: #sofa2-mtl; obj: #sofa2-obj" position="-12 0.5 -12"  scale="2 3 3" rotation="0 -70 0"></a-entity>
 
       <!-- PEOPLE -->
-<a-camera><a-cursor></a-cursor></a-camera>
-
+      <a-entity obj-model="obj: #jack-obj; mtl: #jack-mtl" position="23.5 0 3" scale="0.0021 0.0021 0.0021" rotation="0 -90 0"></a-entity>
+      <a-entity obj-model="obj: #scott-obj; mtl: #scott-mtl" position="23.3 0 0" scale="0.00205 0.00205 0.00205" rotation="-90 180 0"></a-entity>
+      
 
     </a-scene>
       <!-- /\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/ Scene end -->
@@ -107,6 +104,5 @@
         ]
       });
     </script>
-    <script src="./js/speechSynthesis.js"></script>
   </body>
 </html>
