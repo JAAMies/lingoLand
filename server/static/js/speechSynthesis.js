@@ -12,19 +12,28 @@ async function speak(text) {
   window.speechSynthesis.speak(msg);
 }
 
+
 var elBox = document.getElementById("books");
+var boxes = Array.from(document.getElementsByClassName("boxes"))
+
+//event listener for showing text
 elBox.addEventListener('click', function(e) {
   var text = document.getElementById("loslibros")
   text.setAttribute("visible", "true")
   setTimeout(() => text.setAttribute("visible", "false"), 3000)
-  speak("los libros")
-  console.log("In event listener")
 });
 
+//event listener for pronouncing object's name
+boxes.forEach(box => box.addEventListener('click', (e) => {
+  speak(box.getAttribute("object"))
+}));
+
+//event listener for highlighting area
 elBox.addEventListener('mouseenter', function(e) {
   elBox.setAttribute("opacity", "0.3")
 });
 
+//event listener for unhighlighting area
 elBox.addEventListener('mouseleave', function(e) {
   elBox.setAttribute("opacity", "0")
 });
