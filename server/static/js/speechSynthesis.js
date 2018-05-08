@@ -15,13 +15,14 @@ async function speak(text) {
 
 var elBox = document.getElementById("books");
 var boxes = Array.from(document.getElementsByClassName("boxes"))
+var texts = Array.from(document.getElementsByClassName("texts"))
 
-//event listener for showing text
-elBox.addEventListener('click', function(e) {
-  var text = document.getElementById("loslibros")
-  text.setAttribute("visible", "true")
-  setTimeout(() => text.setAttribute("visible", "false"), 3000)
-});
+//event listener for writing object's name
+boxes.forEach(box => box.addEventListener('click', (e) => {
+  var element = texts.find(text => text.getAttribute("value") === box.getAttribute("object"))
+  element.setAttribute("visible", "true")
+  setTimeout(() => element.setAttribute("visible", "false"), 3000)
+}));
 
 //event listener for pronouncing object's name
 boxes.forEach(box => box.addEventListener('click', (e) => {
@@ -29,11 +30,12 @@ boxes.forEach(box => box.addEventListener('click', (e) => {
 }));
 
 //event listener for highlighting area
-elBox.addEventListener('mouseenter', function(e) {
-  elBox.setAttribute("opacity", "0.3")
-});
+boxes.forEach(box => box.addEventListener('mouseenter', (e) => {
+  box.setAttribute("opacity", "0.5")
+}));
 
 //event listener for unhighlighting area
-elBox.addEventListener('mouseleave', function(e) {
-  elBox.setAttribute("opacity", "0")
-});
+boxes.forEach(box => box.addEventListener('mouseleave', (e) => {
+  box.setAttribute("opacity", "0")
+}));
+
